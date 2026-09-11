@@ -1,0 +1,67 @@
+name: Reportar un problema
+description: Algo no funciona, se ve mal o la app se cerró.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por reportarlo. Si llegaste desde la app (**Ajustes → General → Reportar un problema**, o el aviso tras un error), la versión y el error ya vienen puestos.
+
+        **Antes de enviar:** este repositorio es público. Revisa lo que pegues y quita tokens, rutas o nombres que no quieras publicar.
+
+  - type: input
+    id: version
+    attributes:
+      label: Versión de CodeForge
+      description: Ajustes → General → Versión.
+      placeholder: "0.1.1"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: windows
+    attributes:
+      label: Windows
+      options:
+        - Windows 11
+        - Windows 10
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Qué tipo de problema es
+      options:
+        - Algo no hace lo que debería
+        - Algo se ve mal o se desacomoda
+        - La app se cerró sola
+        - La ventana quedó en blanco o con un error
+        - Otro
+    validations:
+      required: true
+
+  - type: textarea
+    id: what
+    attributes:
+      label: Qué pasó
+      description: Qué esperabas y qué pasó en cambio.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Cómo reproducirlo
+      description: Los pasos, si sabes cuáles son.
+      placeholder: |
+        1. Abrir Ramas
+        2. ...
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error o registro
+      description: |
+        Si vienes de un error, aquí ya está. Si no, en **Ajustes → General → Ver registro** puedes copiar las últimas líneas; los archivos completos están en `%APPDATA%\CodeForge\logs\`.
+      render: text
